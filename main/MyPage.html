@@ -1,0 +1,73 @@
+{{ block styles }}
+    <style>
+        .radio_option {
+            text-align: center;
+            vertical-align: middle;
+            width: 50px;
+        }
+
+        .hoverTable tbody tr:hover {
+            background-color: rgb(204, 220, 235);
+        }
+
+        .td_header {
+            text-align: center;
+            font-weight: normal;
+            vertical-align: middle;
+        }
+
+        .question_label {
+            text-align: left;
+            width: 35%;
+        }
+
+    </style>
+{{ endblock }}
+
+{{ block title }}
+    Survey <hr>
+{{ endblock }}
+
+{{ block content }}
+    <h5>How satisfied or dissatisfied are you with each of the following?</h5>
+    <table id="matrixTable" class="table table-striped hoverTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="td_header">1 - Very satisfied</th>
+                <th class="td_header">2 - Somewhat satisfied</th>
+                <th class="td_header">3 - Neither satisfied nor dissatisfied</th>
+                <th class="td_header">4 - Somewhat dissatisfied</th>
+                <th class="td_header">5 - Very dissatisfied</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="question_label">{{ form.statement1.label }}</td>
+                {{ for choice in form.statement1 }}
+                    <td class="radio_option">{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="question_label">{{ form.statement2.label }}</td>
+                {{ for choice in form.statement2 }}
+                    <td class="radio_option ">{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="question_label">{{ form.statement3.label }}</td>
+                {{ for choice in form.statement3 }}
+                    <td class="radio_option">{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+            <tr>
+                <td class="question_label">{{ form.statement4.label }}</td>
+                {{ for choice in form.statement4 }}
+                    <td class="radio_option">{{ choice }}</td>
+                {{ endfor }}
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    {{ next_button }}
+{{ endblock }}
